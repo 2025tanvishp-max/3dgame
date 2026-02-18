@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: url("JS/Assets/background.png") no-repeat center center/cover;
+    min-height: 100vh;
+    text-align: center;
+    color: #ffffff;
+    overflow-x: hidden;
+    transition: filter 0.1s;
+}
+
+header {
+    padding: 20px;
+    font-size: 32px;
+    text-shadow: 
+        2px 2px 0px #ff69b4,
+        4px 4px 0px #00bfff;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: 2px solid #00ffff;
+    background: transparent;
+    color: #00ffff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00ffff;
+    color: black;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+.stats {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 120px);
+    gap: 18px;
+    justify-content: center;
+    perspective: 1200px;
+}
+
+
+.card {
+    width: 120px;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background: #ffcc00;
+    border: 4px solid #ff9900;
+    box-shadow: 0 6px 0 #cc7a00;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border: 4px solid #ff69b4;
+}
+
+
+@keyframes shake {
+    0%   { transform: translate(0); }
+    20%  { transform: translate(-8px, 6px); }
+    40%  { transform: translate(8px, -6px); }
+    60%  { transform: translate(-6px, 4px); }
+    80%  { transform: translate(6px, -4px); }
+    100% { transform: translate(0); }
+}
+
+.shake {
+    animation: shake 0.3s ease;
+}
+
+
+
+#flashbang {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    pointer-events: none;
+    z-index: 9999999;
+    opacity: 0;
+}
+
+#flashbang.flash-active {
+    animation: csgoFlash 2.2s ease-out forwards;
+}
+
+@keyframes csgoFlash {
+    0%   { opacity: 0; }
+    2%   { opacity: 1; }    
+    55%  { opacity: 1; }    
+    100% { opacity: 0; }    
+}
+
+body.flashed {
+    animation: retinaBurn 2.2s ease-out forwards;
+}
+
+@keyframes retinaBurn {
+    0%   { filter: blur(0px) brightness(1); }
+    5%   { filter: blur(14px) brightness(3); }
+    55%  { filter: blur(14px) brightness(3); }
+    100% { filter: blur(0px) brightness(1); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
